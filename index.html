@@ -1,454 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Few-Shot Learning</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Multi-Mode Augmentation for FSCIL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #0b0f19;
+        color: #e6e6e6;
+        line-height: 1.6;
+    }
+
+    header {
+        padding: 100px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #1d2b64, #0b0f19);
+    }
+
+    h1 {
+        font-size: 42px;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+        font-weight: 400;
+        color: #b8c0ff;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: #111827;
+        border-radius: 16px;
+        padding: 25px;
+        margin: 20px 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .hero-image {
+        width: 100%;
+        border-radius: 16px;
+        margin-top: 30px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .highlight {
+        color: #7dd3fc;
+        font-weight: 600;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 18px;
+        margin-top: 10px;
+        border-radius: 10px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .section-title {
+        font-size: 26px;
+        margin-top: 50px;
+        border-left: 5px solid #3b82f6;
+        padding-left: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        overflow-x: auto;
+    }
+
+    th, td {
+        border: 1px solid #2d3748;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background: #1f2937;
+    }
+
+    footer {
+        text-align: center;
+        padding: 40px;
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .glow {
+        text-shadow: 0 0 20px rgba(59,130,246,0.6);
+    }
+</style>
 </head>
+
 <body>
-    <div class="grain"></div>
-    
-    <nav class="nav">
-        <div class="nav-content">
-            <div class="nav-title">RA</div>
-            <div class="nav-links">
-                <a href="#abstract">Abstract</a>
-                <a href="#method">Method</a>
-                <a href="#approach">Comparison</a>
-                <a href="#results">Results</a>
+
+<header>
+    <h1 class="glow">Multi-Mode Feature Augmentation</h1>
+    <h2>Robust Feature Distributions for Few-Shot Incremental Learning</h2>
+
+    <!-- HERO FIGURE -->
+    <img class="hero-image" src="hero_figure.png" alt="Graphical Abstract">
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2 class="section-title">🔥 Abstract</h2>
+        <p>
+        We propose a novel feature augmentation strategy for Few-Shot Class-Incremental Learning (FSCIL).
+        Our method generates <span class="highlight">multi-mode feature distributions</span> using spatial mixing,
+        frequency-domain perturbations, and controlled noise to improve class separability while preserving decision boundaries.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">✨ Key Contributions</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎯 Multi-Mode Augmentation</h3>
+                <p>Spatial + frequency + noise-based feature enrichment.</p>
+            </div>
+            <div class="card">
+                <h3>🧠 Better Feature Geometry</h3>
+                <p>Improves intra-class diversity without boundary collapse.</p>
+            </div>
+            <div class="card">
+                <h3>📈 State-of-the-Art Results</h3>
+                <p>+9.42% improvement on miniImageNet.</p>
             </div>
         </div>
-    </nav>
+    </div>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-label">Research Project</div>
-            <h1 class="hero-title">
-                <span class="hero-subtitle">A Novel Feature-Space Mixing Strategy for Few-Shot Class-Incremental Learning</span>
-            </h1>
-            <div class="hero-meta">
-                <div class="meta-item">
-                    <span class="meta-label">Domain</span>
-                    <span class="meta-value">Computer Vision · Few-Shot Learning</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Contribution</span>
-                    <span class="meta-value">Feature Augmentation Method</span>
-                </div>
+    <div class="card">
+        <h2 class="section-title">🧩 Method Overview</h2>
+        <p>
+        The model enhances base class representations using embedding-level augmentation.
+        </p>
+        <img class="hero-image" src="method_pipeline.png" alt="Method Pipeline">
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">📊 Feature Visualization</h2>
+        <div class="grid">
+            <div>
+                <h3>Baseline</h3>
+                <img class="hero-image" src="tsne_baseline.png">
+            </div>
+            <div>
+                <h3>Ours</h3>
+                <img class="hero-image" src="tsne_ours.png">
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="visual-grid">
-                <div class="grid-item" style="animation-delay: 0s;"></div>
-                <div class="grid-item" style="animation-delay: 0.1s;"></div>
-                <div class="grid-item" style="animation-delay: 0.2s;"></div>
-                <div class="grid-item" style="animation-delay: 0.3s;"></div>
-                <div class="grid-item" style="animation-delay: 0.4s;"></div>
-                <div class="grid-item" style="animation-delay: 0.5s;"></div>
-            </div>
-        </div>
-    </header>
+    </div>
 
-    <main class="main">
-        <section id="abstract" class="section">
-            <div class="section-number">01</div>
-            <div class="section-content">
-                <h2 class="section-title">Abstract</h2>
-                <div class="abstract-text">
-                    <p>
-                        Few-shot class-incremental learning (FSCIL) presents a fundamental challenge in continual learning: 
-                        acquiring new knowledge from limited examples while preventing catastrophic forgetting of base classes. 
-                        Traditional data augmentation methods often prove insufficient in the few-shot regime.
-                    </p>
-                    <p>
-                        We introduce <strong>Replace Augmentation</strong>, a novel feature-space mixing strategy that operates 
-                        at both spatial and frequency domains. Unlike conventional mixup techniques, our method strategically 
-                        combines embeddings from different samples through:
-                    </p>
-                    <ul class="feature-list">
-                        <li><strong>Spatial mixing</strong> — Linear interpolation of feature embeddings</li>
-                        <li><strong>Frequency domain manipulation</strong> — FFT-based magnitude and phase mixing</li>
-                        <li><strong>Adaptive noise injection</strong> — Controlled perturbation for regularization</li>
-                    </ul>
-                    <p>
-                        This approach generates diverse, synthetic training samples that enhance model generalization 
-                        without requiring additional labeled data.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <div class="card">
+        <h2 class="section-title">📉 Results (miniImageNet)</h2>
 
-        <section id="method" class="section">
-            <div class="section-number">02</div>
-            <div class="section-content">
-                <h2 class="section-title">Methodology</h2>
-                
-                <div class="method-block">
-                    <h3 class="method-heading">Core Algorithm</h3>
-                    <p>Replace Augmentation operates on feature embeddings extracted from the encoder network:</p>
-                    
-                    <div class="algorithm-box">
-                        <div class="algorithm-step">
-                            <span class="step-num">1</span>
-                            <div class="step-content">
-                                <strong>Feature Extraction:</strong> Input samples pass through encoder to obtain feature representations
-                            </div>
-                        </div>
-                        <div class="algorithm-step">
-                            <span class="step-num">2</span>
-                            <div class="step-content">
-                                <strong>Spatial Mixing:</strong> For odd-indexed samples, create synthetic features via interpolation:<br>
-                                <code>f'[i] = λ · f[i] + (1-λ) · f[j]</code> where j is randomly selected
-                            </div>
-                        </div>
-                        <div class="algorithm-step">
-                            <span class="step-num">3</span>
-                            <div class="step-content">
-                                <strong>Frequency Transform:</strong> Apply FFT to decompose features into magnitude and phase:<br>
-                                <code>F = FFT(f), |F| = magnitude, ∠F = phase</code>
-                            </div>
-                        </div>
-                        <div class="algorithm-step">
-                            <span class="step-num">4</span>
-                            <div class="step-content">
-                                <strong>Frequency Mixing:</strong> Mix magnitude and phase components across random pairs
-                            </div>
-                        </div>
-                        <div class="algorithm-step">
-                            <span class="step-num">5</span>
-                            <div class="step-content">
-                                <strong>Noise Regularization:</strong> Add Gaussian noise (σ = 0.02) and normalize
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Avg Acc</th>
+                <th>Final Session</th>
+            </tr>
+            <tr>
+                <td>FACL</td>
+                <td>70.77</td>
+                <td>59.48</td>
+            </tr>
+            <tr>
+                <td>Flexi-FSCIL</td>
+                <td>66.38</td>
+                <td>59.69</td>
+            </tr>
+            <tr>
+                <td><b>Ours</b></td>
+                <td><b>80.19</b></td>
+                <td><b>66.18</b></td>
+            </tr>
+        </table>
+    </div>
 
-                <div class="method-block">
-                    <h3 class="method-heading">Integration with MoCo Framework</h3>
-                    <p>
-                        Replace Augmentation seamlessly integrates into the Momentum Contrast (MoCo) framework, 
-                        applying augmentation to both query and key encoders during contrastive learning.
-                    </p>
-                    <div class="framework-features">
-                        <div class="framework-item">
-                            <div class="framework-icon">Q</div>
-                            <div class="framework-text">
-                                <strong>Query Encoder</strong><br>
-                                Features augmented before contrastive loss
-                            </div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="framework-icon">K</div>
-                            <div class="framework-text">
-                                <strong>Key Encoder</strong><br>
-                                Momentum-updated with augmentation
-                            </div>
-                        </div>
-                        <div class="framework-item">
-                            <div class="framework-icon">∞</div>
-                            <div class="framework-text">
-                                <strong>Queue Mechanism</strong><br>
-                                Memory bank for negative samples
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="card">
+        <h2 class="section-title">⚙️ How It Works</h2>
+        <ol>
+            <li>Extract base features using backbone network</li>
+            <li>Apply spatial feature mixing</li>
+            <li>Apply frequency-domain perturbation</li>
+            <li>Add controlled Gaussian noise</li>
+            <li>Normalize and train with contrastive loss</li>
+        </ol>
+    </div>
 
-                <div class="method-block">
-                    <h3 class="method-heading">Key Hyperparameters</h3>
-                    <div class="params-grid">
-                        <div class="param-card">
-                            <div class="param-name">λ (lambda)</div>
-                            <div class="param-value">0.5</div>
-                            <div class="param-desc">Mixing coefficient</div>
-                        </div>
-                        <div class="param-card">
-                            <div class="param-name">mix_lam</div>
-                            <div class="param-value">0.5</div>
-                            <div class="param-desc">Frequency mix ratio</div>
-                        </div>
-                        <div class="param-card">
-                            <div class="param-name">noise_std</div>
-                            <div class="param-value">0.02</div>
-                            <div class="param-desc">Noise standard deviation</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="card">
+        <h2 class="section-title">🚀 Conclusion</h2>
+        <p>
+        Multi-mode augmentation significantly improves feature robustness in FSCIL,
+        enabling better generalization to unseen classes while preserving old knowledge.
+        </p>
+    </div>
 
-        <section id="approach" class="section">
-            <div class="section-number">03</div>
-            <div class="section-content">
-                <h2 class="section-title">Previous vs. Our Approach</h2>
-                
-                <div class="comparison-container">
-                    <div class="comparison-side previous">
-                        <div class="comparison-header">
-                            <h3>Traditional Methods</h3>
-                            <span class="label-badge old">Baseline</span>
-                        </div>
-                        <div class="comparison-content">
-                            <div class="comparison-item">
-                                <strong>Standard Data Augmentation</strong>
-                                <p>Random crops, flips, color jittering applied in pixel space</p>
-                                <span class="limitation">Limited diversity in few-shot scenarios</span>
-                            </div>
-                            <div class="comparison-item">
-                                <strong>Simple Mixup</strong>
-                                <p>Linear interpolation between image pairs</p>
-                                <span class="limitation">Lacks frequency domain awareness</span>
-                            </div>
-                            <div class="comparison-item">
-                                <strong>Contrastive Learning Only</strong>
-                                <p>MoCo framework without feature augmentation</p>
-                                <span class="limitation">Struggles with limited samples</span>
-                            </div>
-                        </div>
-                    </div>
+</div>
 
-                    <div class="comparison-divider">
-                        <div class="arrow-icon">→</div>
-                    </div>
+<footer>
+    © 2026 Multi-Mode FSCIL Project Page • Built for impactful research presentation
+</footer>
 
-                    <div class="comparison-side ours">
-                        <div class="comparison-header">
-                            <h3>Replace Augmentation</h3>
-                            <span class="label-badge new">Our Method</span>
-                        </div>
-                        <div class="comparison-content">
-                            <div class="comparison-item">
-                                <strong>Feature-Space Mixing</strong>
-                                <p>Strategic interpolation of learned embeddings</p>
-                                <span class="advantage">Preserves semantic information</span>
-                            </div>
-                            <div class="comparison-item">
-                                <strong>Dual-Domain Augmentation</strong>
-                                <p>Combined spatial + FFT-based frequency mixing</p>
-                                <span class="advantage">Richer feature diversity</span>
-                            </div>
-                            <div class="comparison-item">
-                                <strong>Adaptive Regularization</strong>
-                                <p>Controlled noise injection with normalization</p>
-                                <span class="advantage">Better generalization</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="key-innovation">
-                    <h3>Key Innovation</h3>
-                    <p>
-                        Unlike traditional augmentation that operates on raw pixels, <strong>Replace Augmentation</strong> 
-                        works directly in the feature space, allowing semantically meaningful combinations. The frequency 
-                        domain manipulation via FFT provides an additional dimension of diversity that pixel-space methods 
-                        cannot achieve.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="results" class="section">
-            <div class="section-number">04</div>
-            <div class="section-content">
-                <h2 class="section-title">Experimental Results</h2>
-                
-                <div class="results-intro">
-                    <p>
-                        We evaluate Replace Augmentation on three benchmark datasets for Few-Shot Class-Incremental Learning (FSCIL), 
-                        demonstrating consistent improvements across different domains and complexity levels.
-                    </p>
-                </div>
-
-                <div class="datasets-grid">
-                    <div class="dataset-card">
-                        <div class="dataset-name">CIFAR-100</div>
-                        <div class="dataset-info">100 classes • 32×32 images • Natural objects</div>
-                    </div>
-                    <div class="dataset-card">
-                        <div class="dataset-name">miniImageNet</div>
-                        <div class="dataset-info">100 classes • 84×84 images • ImageNet subset</div>
-                    </div>
-                    <div class="dataset-card">
-                        <div class="dataset-name">CUB-200</div>
-                        <div class="dataset-info">200 classes • Fine-grained birds • High complexity</div>
-                    </div>
-                </div>
-
-                <div class="results-table-section">
-                    <h3>Performance Comparison</h3>
-                    <p class="table-note">Average accuracy (%) across all incremental sessions</p>
-                    
-                    <div class="performance-table">
-                        <div class="table-header">
-                            <div class="th">Method</div>
-                            <div class="th">CIFAR-100</div>
-                            <div class="th">miniImageNet</div>
-                            <div class="th">CUB-200</div>
-                        </div>
-                        <div class="table-row baseline">
-                            <div class="td method-name">Baseline (MoCo)</div>
-                            <div class="td">64.2</div>
-                            <div class="td">68.5</div>
-                            <div class="td">70.3</div>
-                        </div>
-                        <div class="table-row baseline">
-                            <div class="td method-name">+ Standard Augmentation</div>
-                            <div class="td">65.8</div>
-                            <div class="td">69.7</div>
-                            <div class="td">71.6</div>
-                        </div>
-                        <div class="table-row baseline">
-                            <div class="td method-name">+ Simple Mixup</div>
-                            <div class="td">66.4</div>
-                            <div class="td">70.2</div>
-                            <div class="td">72.1</div>
-                        </div>
-                        <div class="table-row ours-row">
-                            <div class="td method-name"><strong>+ Replace Augmentation (Ours)</strong></div>
-                            <div class="td"><strong>68.9</strong> <span class="improvement">+4.7</span></div>
-                            <div class="td"><strong>73.2</strong> <span class="improvement">+4.7</span></div>
-                            <div class="td"><strong>75.8</strong> <span class="improvement">+5.5</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-icon">📈</div>
-                        <div class="metric-value">+4.7% - 5.5%</div>
-                        <div class="metric-label">Average Improvement</div>
-                        <div class="metric-desc">Consistent gains across all benchmarks</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">🎯</div>
-                        <div class="metric-value">75.8%</div>
-                        <div class="metric-label">Best Performance</div>
-                        <div class="metric-desc">CUB-200 fine-grained classification</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">🔄</div>
-                        <div class="metric-value">Minimal</div>
-                        <div class="metric-label">Overhead</div>
-                        <div class="metric-desc">Feature-space operations are efficient</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-icon">🧠</div>
-                        <div class="metric-value">No Extra Data</div>
-                        <div class="metric-label">Data Efficiency</div>
-                        <div class="metric-desc">Synthetic samples from existing features</div>
-                    </div>
-                </div>
-
-                <div class="key-findings">
-                    <h3>Key Findings</h3>
-                    <div class="findings-list">
-                        <div class="finding-item">
-                            <div class="finding-number">1</div>
-                            <div class="finding-content">
-                                <strong>Frequency Domain Matters:</strong> Ablation studies show that FFT-based mixing 
-                                contributes significantly (2-3% improvement) beyond spatial mixing alone.
-                            </div>
-                        </div>
-                        <div class="finding-item">
-                            <div class="finding-number">2</div>
-                            <div class="finding-content">
-                                <strong>Fine-Grained Benefits:</strong> Largest improvements on CUB-200 suggest the method 
-                                is particularly effective for subtle feature discrimination.
-                            </div>
-                        </div>
-                        <div class="finding-item">
-                            <div class="finding-number">3</div>
-                            <div class="finding-content">
-                                <strong>Catastrophic Forgetting Reduced:</strong> Base class accuracy remains stable 
-                                across incremental sessions, indicating better knowledge retention.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ablation-section">
-                    <h3>Ablation Study</h3>
-                    <p>Effect of different components on miniImageNet:</p>
-                    <div class="ablation-grid">
-                        <div class="ablation-card">
-                            <div class="ablation-config">Spatial Only</div>
-                            <div class="ablation-acc">70.8%</div>
-                        </div>
-                        <div class="ablation-card">
-                            <div class="ablation-config">Frequency Only</div>
-                            <div class="ablation-acc">71.4%</div>
-                        </div>
-                        <div class="ablation-card highlight">
-                            <div class="ablation-config">Both + Noise</div>
-                            <div class="ablation-acc">73.2%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section footer-section">
-            <div class="section-content">
-                <div class="footer-content">
-                    <h2>Contact & Code Availability</h2>
-                    <p>For questions, collaborations, or access to the full implementation:</p>
-                    <div class="contact-options">
-                        <div class="contact-item">
-                            <span class="contact-icon">📧</span>
-                            <span>research.replace.aug@proton.me</span>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">💻</span>
-                            <span>Code available upon request</span>
-                        </div>
-                    </div>
-                    <p class="footer-note">
-                        This research is currently under review. Full code and pretrained models 
-                        will be released upon publication.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Fade in sections on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
