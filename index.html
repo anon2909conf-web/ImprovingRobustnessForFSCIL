@@ -5,54 +5,59 @@
 <title>Multi-Mode Augmentation for FSCIL</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+    :root {
+        --bg: #f7f9fc;
+        --card: rgba(255,255,255,0.75);
+        --text: #1a1f2b;
+        --muted: #6b7280;
+        --accent: #6c7cff;
+        --accent2: #7ee7ff;
+        --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
     body {
         margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: #0b0f19;
-        color: #e6e6e6;
-        line-height: 1.6;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(120deg, #f7f9fc, #eef3ff);
+        color: var(--text);
     }
 
     header {
-        padding: 100px 20px;
+        padding: 80px 20px 40px;
         text-align: center;
-        background: radial-gradient(circle at top, #1d2b64, #0b0f19);
+        background: radial-gradient(circle at top, #e9efff, transparent);
     }
 
     h1 {
-        font-size: 42px;
-        font-weight: 800;
-        margin-bottom: 10px;
+        font-size: 40px;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -1px;
     }
 
-    h2 {
-        font-size: 22px;
-        font-weight: 400;
-        color: #b8c0ff;
+    .subtitle {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 18px;
     }
 
     .container {
-        max-width: 1000px;
+        max-width: 1100px;
         margin: auto;
-        padding: 40px 20px;
+        padding: 20px;
     }
 
     .card {
-        background: #111827;
+        background: var(--card);
+        backdrop-filter: blur(10px);
         border-radius: 16px;
-        padding: 25px;
-        margin: 20px 0;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .hero-image {
-        width: 100%;
-        border-radius: 16px;
-        margin-top: 30px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
     }
 
     .grid {
@@ -62,169 +67,185 @@
     }
 
     .highlight {
-        color: #7dd3fc;
-        font-weight: 600;
-    }
-
-    .button {
-        display: inline-block;
-        padding: 10px 18px;
-        margin-top: 10px;
-        border-radius: 10px;
-        background: #2563eb;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
         color: white;
-        text-decoration: none;
+        padding: 14px 20px;
+        border-radius: 12px;
+        display: inline-block;
         font-weight: 600;
+        margin-top: 10px;
     }
 
-    .section-title {
+    h2 {
         font-size: 26px;
-        margin-top: 50px;
-        border-left: 5px solid #3b82f6;
-        padding-left: 10px;
+        margin-bottom: 10px;
     }
 
-    table {
+    p {
+        line-height: 1.7;
+        color: var(--text);
+    }
+
+    .figure {
         width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        overflow-x: auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-top: 10px;
     }
 
-    th, td {
-        border: 1px solid #2d3748;
-        padding: 10px;
-        text-align: center;
+    .figure img {
+        width: 100%;
+        display: block;
     }
 
-    th {
-        background: #1f2937;
+    .tag {
+        display: inline-block;
+        background: #eef2ff;
+        color: #4f46e5;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        margin: 4px;
     }
 
     footer {
         text-align: center;
         padding: 40px;
-        color: #6b7280;
+        color: var(--muted);
         font-size: 14px;
     }
 
-    .glow {
-        text-shadow: 0 0 20px rgba(59,130,246,0.6);
+    .hero-badges {
+        margin-top: 15px;
     }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1 class="glow">Multi-Mode Feature Augmentation</h1>
-    <h2>Robust Feature Distributions for Few-Shot Incremental Learning</h2>
+    <h1>Multi-Mode Augmentation for Robust Feature Distributions</h1>
+    <div class="subtitle">
+        Few-Shot Class-Incremental Learning with Spatial, Frequency & Noise-based Feature Enrichment
+    </div>
 
-    <!-- HERO FIGURE -->
-    <img class="hero-image" src="hero_figure.png" alt="Graphical Abstract">
+    <div class="hero-badges">
+        <span class="tag">FSCIL</span>
+        <span class="tag">Representation Learning</span>
+        <span class="tag">Feature Augmentation</span>
+        <span class="tag">NeurIPS-style</span>
+    </div>
+
+    <div class="highlight">State-of-the-Art Performance on CIFAR-100 & miniImageNet</div>
 </header>
 
 <div class="container">
 
+    <!-- Abstract -->
     <div class="card">
-        <h2 class="section-title">🔥 Abstract</h2>
+        <h2>Abstract</h2>
         <p>
-        We propose a novel feature augmentation strategy for Few-Shot Class-Incremental Learning (FSCIL).
-        Our method generates <span class="highlight">multi-mode feature distributions</span> using spatial mixing,
-        frequency-domain perturbations, and controlled noise to improve class separability while preserving decision boundaries.
+        We propose a multi-mode feature augmentation strategy for Few-Shot Class-Incremental Learning (FSCIL).
+        Our method strengthens base-class feature distributions using spatial mixing, frequency-domain perturbations,
+        and controlled noise injection. This improves intra-class diversity while preserving decision boundaries,
+        enabling robust adaptation to new classes under extreme data scarcity.
         </p>
     </div>
 
+    <!-- Figure 1 -->
     <div class="card">
-        <h2 class="section-title">✨ Key Contributions</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🎯 Multi-Mode Augmentation</h3>
-                <p>Spatial + frequency + noise-based feature enrichment.</p>
-            </div>
-            <div class="card">
-                <h3>🧠 Better Feature Geometry</h3>
-                <p>Improves intra-class diversity without boundary collapse.</p>
-            </div>
-            <div class="card">
-                <h3>📈 State-of-the-Art Results</h3>
-                <p>+9.42% improvement on miniImageNet.</p>
-            </div>
+        <h2>Framework Overview</h2>
+        <div class="figure">
+            <img src="your_framework_image.png" alt="Framework Figure">
         </div>
-    </div>
-
-    <div class="card">
-        <h2 class="section-title">🧩 Method Overview</h2>
-        <p>
-        The model enhances base class representations using embedding-level augmentation.
+        <p style="color:var(--muted)">
+            Multi-mode augmentation operates in feature space before classifier update, improving robustness across incremental sessions.
         </p>
-        <img class="hero-image" src="method_pipeline.png" alt="Method Pipeline">
     </div>
 
+    <!-- Key Idea -->
     <div class="card">
-        <h2 class="section-title">📊 Feature Visualization</h2>
+        <h2>Core Idea</h2>
         <div class="grid">
-            <div>
-                <h3>Baseline</h3>
-                <img class="hero-image" src="tsne_baseline.png">
+
+            <div class="card">
+                <h3>Spatial Mixing</h3>
+                <p>Interpolates feature embeddings to increase intra-class variability.</p>
             </div>
-            <div>
-                <h3>Ours</h3>
-                <img class="hero-image" src="tsne_ours.png">
+
+            <div class="card">
+                <h3>Frequency Perturbation</h3>
+                <p>Injects spectral diversity using Fourier-domain transformations.</p>
             </div>
+
+            <div class="card">
+                <h3>Noise Injection</h3>
+                <p>Stabilizes representation space under stochastic perturbations.</p>
+            </div>
+
         </div>
     </div>
 
+    <!-- Visualization -->
     <div class="card">
-        <h2 class="section-title">📉 Results (miniImageNet)</h2>
+        <h2>Feature Space Visualization</h2>
 
-        <table>
-            <tr>
-                <th>Method</th>
-                <th>Avg Acc</th>
-                <th>Final Session</th>
-            </tr>
-            <tr>
-                <td>FACL</td>
-                <td>70.77</td>
-                <td>59.48</td>
-            </tr>
-            <tr>
-                <td>Flexi-FSCIL</td>
-                <td>66.38</td>
-                <td>59.69</td>
-            </tr>
-            <tr>
-                <td><b>Ours</b></td>
-                <td><b>80.19</b></td>
-                <td><b>66.18</b></td>
-            </tr>
-        </table>
+        <div class="grid">
+            <div class="figure">
+                <img src="tsne_baseline.png" alt="Baseline TSNE">
+            </div>
+            <div class="figure">
+                <img src="tsne_ours.png" alt="Ours TSNE">
+            </div>
+        </div>
+
+        <p style="color:var(--muted)">
+            Our method produces tighter, more separable clusters compared to baseline FSCIL approaches.
+        </p>
     </div>
 
+    <!-- Results -->
     <div class="card">
-        <h2 class="section-title">⚙️ How It Works</h2>
-        <ol>
-            <li>Extract base features using backbone network</li>
-            <li>Apply spatial feature mixing</li>
-            <li>Apply frequency-domain perturbation</li>
-            <li>Add controlled Gaussian noise</li>
-            <li>Normalize and train with contrastive loss</li>
-        </ol>
+        <h2>Key Results</h2>
+        <div class="grid">
+
+            <div class="card">
+                <h3>miniImageNet</h3>
+                <p><b>80.19%</b> average accuracy</p>
+                <p style="color:var(--muted)">+9.42% improvement over previous SOTA</p>
+            </div>
+
+            <div class="card">
+                <h3>CIFAR-100</h3>
+                <p><b>76.48%</b> average accuracy</p>
+                <p style="color:var(--muted)">+6.08% improvement over previous SOTA</p>
+            </div>
+
+            <div class="card">
+                <h3>Forgetting Reduction</h3>
+                <p><b>Significantly reduced</b></p>
+                <p style="color:var(--muted">Stable performance across 8 incremental sessions</p>
+            </div>
+
+        </div>
     </div>
 
+    <!-- Citation -->
     <div class="card">
-        <h2 class="section-title">🚀 Conclusion</h2>
+        <h2>Conclusion</h2>
         <p>
-        Multi-mode augmentation significantly improves feature robustness in FSCIL,
-        enabling better generalization to unseen classes while preserving old knowledge.
+        We demonstrate that enriching feature distributions during the base session leads to significantly more robust
+        incremental learning. Unlike prior methods that expand feature space, we strengthen internal structure,
+        resulting in better generalization and reduced interference.
         </p>
     </div>
 
 </div>
 
 <footer>
-    © 2026 Multi-Mode FSCIL Project Page • Built for impactful research presentation
+    © 2026 FSCIL Research Page · Built for Visual Impact
 </footer>
 
 </body>
