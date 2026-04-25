@@ -146,10 +146,10 @@
     <div class="card">
         <h2>Abstract</h2>
         <p>
-        We propose a multi-mode feature augmentation strategy for Few-Shot Class-Incremental Learning (FSCIL).
-        Our method strengthens base-class feature distributions using spatial mixing, frequency-domain perturbations,
-        and controlled noise injection. This improves intra-class diversity while preserving decision boundaries,
-        enabling robust adaptation to new classes under extreme data scarcity.
+        Few-shot incremental learning focuses on forming algorithms that enable a model to continually learn new information or classes from limited data while retaining knowledge of previously learned classes. Existing approaches commonly freeze the network parameters corresponding to previously learned classes during the incorporation of new classes. However, this strategy often results in inadequate separation of the boundaries of old classes. As a result, when new classes are introduced, their features may overlap with the boundaries of the old classes.
+To address these challenges, we propose a novel feature-level augmentation strategy designed to diversify and strengthen the feature distributions of previously learned classes before incremental updates, thus facilitating the integration of new classes.
+Our approach generates multi-mode augmented features through (i) spatial feature mixing, (ii) frequency-domain feature perturbation, and (iii) controlled noise, producing diverse proxy representations of old classes. Our proposed enrichment of the internal variation of old class clusters allows the classifier to better distinguish old classes from new ones, even in the presence of potential overlap.
+We validate the effectiveness of our framework through experiments on two FSCIL benchmark datasets: CIFAR-100 and miniImageNet. The results demonstrate significant improvements over existing methods, achieving state-of-the-art performance. 
         </p>
     </div>
 
@@ -157,7 +157,7 @@
     <div class="card">
         <h2>Framework Overview</h2>
         <div class="figure">
-            <img src="bb_nn.pdf" alt="Framework Figure">
+            <img src="bb_nn.png" alt="Framework Figure">
         </div>
         <p style="color:var(--muted)">
             Multi-mode augmentation operates in feature space before classifier update, improving robustness across incremental sessions.
@@ -196,7 +196,7 @@
                 <img src="tsne_session_0-thrs.png" alt="Baseline TSNE">
             </div>
             <div class="figure">
-                <img src="tsne_session_0_ours.png" alt="Ours TSNE">
+                <img src="tsne_session_0_our.png" alt="Ours TSNE">
             </div>
         </div>
 
